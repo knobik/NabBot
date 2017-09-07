@@ -49,6 +49,24 @@ def get_user_color(user: discord.Member, guild: discord.Guild) -> discord.Colour
     return discord.Colour.default()
 
 
+def get_region_string(region) -> str:
+    """Returns a formatted string for a given GuildRegion"""
+    regions = {"us-west": EMOJI[":flag_us:"]+"US West",
+               "us-east": EMOJI[":flag_us:"]+"US East",
+               "us-central": EMOJI[":flag_us:"]+"US Central",
+               "us-south": EMOJI[":flag_us:"]+"US South",
+               "eu-west": EMOJI[":flag_eu:"]+"West Europe",
+               "eu-central": EMOJI[":flag_eu:"]+"Central Europe",
+               "singapore": EMOJI[":flag_sg:"]+"Singapore",
+               "london": EMOJI[":flag_gb:"]+"London",
+               "sydney": EMOJI[":flag_au:"]+"Sydney",
+               "amsterdam": EMOJI[":flag_nl:"]+"Amsterdam",
+               "frankfurt": EMOJI[":flag_de:"]+"Frankfurt",
+               "brazil": EMOJI[":flag_br:"]+"Brazil"
+               }
+    return regions.get(str(region), str(region))
+
+
 def is_private(channel: Messageable) -> bool:
     return isinstance(channel, PrivateChannel)
 
