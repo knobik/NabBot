@@ -185,7 +185,7 @@ class TimeString:
             raise commands.BadArgument("That's a bit too far in the future... Try less than 15 days.")
 
 
-def requestTibiaUrl(tibia_url):
+async def requestTibiaUrl(tibia_url):
     ip = random.choice(local_ips)
     conn = aiohttp.TCPConnector(local_addr=(ip, 0), loop=loop)
     async with aiohttp.ClientSession(connector=conn) as session:
