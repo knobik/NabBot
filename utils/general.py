@@ -186,7 +186,8 @@ class TimeString:
 
 
 def requestTibiaUrl(tibia_url):
-    conn = aiohttp.TCPConnector(local_addr=(random.choice(local_ips), 0), loop=loop)
+    ip = random.choice(local_ips)
+    conn = aiohttp.TCPConnector(local_addr=(ip, 0), loop=loop)
     async with aiohttp.ClientSession(connector=conn) as session:
         async with session.get(tibia_url) as resp:
             content = await resp.text(encoding='ISO-8859-1')
