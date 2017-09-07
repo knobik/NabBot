@@ -364,7 +364,7 @@ async def get_character(name, tries=5):
 
     # Fetch website
     try:
-        content = requestTibiaUrl(url)
+        content = await requestTibiaUrl(url)
         #async with aiohttp.ClientSession() as session:
         #    async with session.get(url) as resp:
         #        content = await resp.text(encoding='ISO-8859-1')
