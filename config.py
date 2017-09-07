@@ -72,5 +72,8 @@ highscores_page_delay = 5
 # Delay between retries when there's a network error in seconds
 network_retry_delay = 0.5
 
+# local_ips = []
+local_ips = ['127.0.0.1', 'localhost']
+
 if __name__ == "__main__":
     input("To run NabBot, run nabbot.py")

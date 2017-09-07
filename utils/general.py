@@ -6,6 +6,8 @@ import re
 import time
 from calendar import timegm
 from datetime import datetime, date, timedelta
+import aiohttp
+import random
 
 from config import *
 
@@ -183,5 +185,13 @@ class TimeString:
             raise commands.BadArgument("That's a bit too far in the future... Try less than 15 days.")
 
 
+def requestTibiaUrl(tibia_url):
+    conn = aiohttp.TCPConnector(local_addr=(random.choice(local_ips), 0), loop=loop)
+    async with aiohttp.ClientSession(connector=conn) as session:
+        async with session.get(tibia_url) as resp:
+            content = await resp.text(encoding='ISO-8859-1')
+           
+    return content;
+			
 if __name__ == "__main__":
     input("To run NabBot, run nabbot.py")

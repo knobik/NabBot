@@ -16,7 +16,7 @@ import time
 from utils.database import userDatabase, tibiaDatabase
 from config import highscores_categories, network_retry_delay
 from utils.messages import EMOJI
-from .general import log, global_online_list, get_local_timezone
+from .general import log, global_online_list, get_local_timezone, requestTibiaUrl
 
 # Constants
 ERROR_NETWORK = 0
@@ -364,9 +364,10 @@ async def get_character(name, tries=5):
 
     # Fetch website
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url) as resp:
-                content = await resp.text(encoding='ISO-8859-1')
+        content = requestTibiaUrl(url)
+        #async with aiohttp.ClientSession() as session:
+        #    async with session.get(url) as resp:
+        #        content = await resp.text(encoding='ISO-8859-1')
     except Exception:
         await asyncio.sleep(network_retry_delay)
         return await get_character(name, tries-1)
