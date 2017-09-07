@@ -187,6 +187,7 @@ class TimeString:
 
 async def requestTibiaUrl(tibia_url):
     ip = random.choice(local_ips)
+    log.info("Fetching URL (local_addr: {0})".format(ip))
     conn = aiohttp.TCPConnector(local_addr=(ip, 0), loop=loop)
     async with aiohttp.ClientSession(connector=conn) as session:
         async with session.get(tibia_url) as resp:
